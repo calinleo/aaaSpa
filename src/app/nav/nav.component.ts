@@ -6,10 +6,15 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./nav.component.css']
 })
 export class NavComponent implements OnInit {
+  model: any = {}; // this object will store username and password
 
   constructor() { }
 
   ngOnInit() {
+  }
+
+  login() {
+    console.log(this.model);
   }
 
 }
