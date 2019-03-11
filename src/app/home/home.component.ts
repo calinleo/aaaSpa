@@ -8,12 +8,12 @@ import { HttpClient } from '@angular/common/http';
 })
 export class HomeComponent implements OnInit {
   registerMode = false;
-  values: any;
+  // values: any; // dropdown values from DB
 
   constructor(private http: HttpClient) { }
 
   ngOnInit() {
-    this.getValues();
+    // this.getValues();  // dropdown values from DB
   }
 
   registerToggle() {
@@ -21,13 +21,14 @@ export class HomeComponent implements OnInit {
     this.registerMode = true;
   }
 
-  getValues(){
-    this.http.get('http://localhost:5000/api/values').subscribe(response => {
-      this.values = response;
-    }, error => {
-          console.log(error);
-    });
-  }
+  // DROPDOWN from Database
+  // getValues(){
+  //   this.http.get('http://localhost:5000/api/values').subscribe(response => {
+  //     this.values = response;
+  //   }, error => {
+  //         console.log(error);
+  //   });
+  // }
 
   cancelRegisterMode(registerMode: boolean){
     this.registerMode = registerMode;
