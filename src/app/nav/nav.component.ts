@@ -27,9 +27,13 @@ export class NavComponent implements OnInit {
     });
   }
 
+  // loggedIn() { // old code before JWT installed
+  //  const token = localStorage.getItem('token');
+  //  return !!token;        // !! - returns a true or false value, shorthand for if statement
+  // }
+
   loggedIn() {
-    const token = localStorage.getItem('token');
-    return !!token;        // !! - returns a true or false value, shorthand for if statement
+    return this.authService.loggedIn();
   }
 
   logout() {
