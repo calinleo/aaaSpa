@@ -5,6 +5,7 @@ import { MessagesComponent } from './messages/messages.component';
 import { ListsComponent } from './lists/lists.component';
 import { AuthGuard } from './_guards/auth.guard';
 import { MemberDetailComponent } from './members/member-detail/member-detail.component';
+import { MemberDetailResolver } from './_resolvers/member-detail.resolver';
 
 // protecting one single route with Route Guard - below
 
@@ -26,7 +27,7 @@ export const appRoutes: Routes = [
         canActivate: [AuthGuard],
         children: [
             { path: 'members', component: MemberListComponent },
-            { path: 'members/:id', component: MemberDetailComponent },
+            { path: 'members/:id', component: MemberDetailComponent, resolve: {user: MemberDetailResolver} },
             { path: 'messages', component: MessagesComponent },
             { path: 'lists', component: ListsComponent },
         ]
