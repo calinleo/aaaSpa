@@ -35,6 +35,25 @@ baseUrl = environment.apiUrl;
       autoUpload: false,
       maxFileSize: 10 * 1024 * 1024
     });
+
+    // to pass the CORS error in console log
+    this.uploader.onAfterAddingFile = (file) => { file.withCredentials = false; };
+
+    // to make photos appear instantly when the user hit upload button
+    this.uploader.onSuccessItem = (item, response, status, headers) => {
+      if (response) {
+        const res: Photo = JSON.parse(response);
+        const photo = {
+          id: res.id,
+          url: res.url,
+          dateAdded: res.dateAdded,
+          description: res.description,
+          isMain: res.isMain
+        };
+        // we push this new built photo into photo array
+        this.photos.push(photo);
+      }
+    };
   }
 
 }
